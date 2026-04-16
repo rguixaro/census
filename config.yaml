@@ -1,0 +1,26 @@
+storage:
+  type: sqlite
+  path: /data/gatus.db
+
+ui:
+  title: rguixaro.dev Status
+  header: rguixaro.dev Status
+  logo: ""
+  link: "https://rguixaro.dev"
+
+endpoints:
+  - name: Cookbook App
+    group: rguixaro.dev
+    url: https://cookbook.rguixaro.dev/api/health
+    interval: 60s
+    conditions:
+      - "[STATUS] == 200"
+      - "[RESPONSE_TIME] < 5000"
+
+  - name: Roots App
+    group: rguixaro.dev
+    url: https://roots.rguixaro.dev/api/health
+    interval: 60s
+    conditions:
+      - "[STATUS] == 200"
+      - "[RESPONSE_TIME] < 5000"

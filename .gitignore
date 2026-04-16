@@ -1,0 +1,10 @@
+# Fly local state
+.fly/
+
+# macOS
+.DS_Store
+
+# Editor
+.vscode/
+.idea/
+*.swp
