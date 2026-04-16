@@ -1,0 +1,19 @@
+{
+    admin off
+    auto_https off
+    persist_config off
+}
+
+:8080 {
+    # Override every favicon-related asset Gatus serves so the browser tab uses
+    # our icon (Gatus bakes its own PNGs and manifest into the binary, otherwise).
+    @assets path /favicon.svg /favicon.ico /favicon-16x16.png /favicon-32x32.png /apple-touch-icon.png /logo-192x192.png /logo-512x512.png /manifest.json
+    handle @assets {
+        root * /assets
+        file_server
+    }
+
+    handle {
+        reverse_proxy 127.0.0.1:8081
+    }
+}

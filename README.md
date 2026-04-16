@@ -21,11 +21,17 @@ returns `200` within 5 seconds.
 
 ```
 .
-├── Dockerfile      # Gatus image + baked-in config
+├── Dockerfile      # Gatus binary + Caddy front, baked-in config
+├── Caddyfile       # Caddy reverse-proxy + favicon override
+├── start.sh        # Launches Gatus on :8081 and Caddy on :8080
 ├── config.yaml     # Endpoint definitions, storage, UI
+├── favicon.svg     # Browser-tab icon served by Caddy
 ├── fly.toml        # Fly app + VM + volume definition
 └── README.md
 ```
+
+Caddy sits in front of Gatus purely to override `/favicon.svg` (Gatus's favicon is
+baked into the binary). Everything else is proxied transparently to Gatus on :8081.
 
 ## Deploying changes
 

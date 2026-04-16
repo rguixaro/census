@@ -1,3 +1,7 @@
+web:
+    address: "127.0.0.1"
+    port: 8081
+
 storage:
     type: sqlite
     path: /data/gatus.db
