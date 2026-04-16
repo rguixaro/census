@@ -3,32 +3,54 @@ storage:
     path: /data/gatus.db
 
 ui:
-    title: rguixaro.dev Status
-    header: rguixaro.dev Status
-    logo: ''
+    title: 'rguixaro.dev /census'
+    header: 'rguixaro.dev /census'
+    description: 'Watching the vitals of atrium, receptarium, and itinerarium'
+    logo: 'https://portfolio.rguixaro.dev/favicon.svg'
     link: 'https://rguixaro.dev'
+    default-color-scheme: 'light'
+    buttons:
+        - name: 'Source'
+          link: 'https://github.com/rguixaro/census'
+        - name: 'Portfolio'
+          link: 'https://rguixaro.dev'
 
 endpoints:
-    - name: Roots · Atrium
-      group: rguixaro.dev
-      url: https://roots.rguixaro.dev/api/health
+    - name: 'Roots :: atrium'
+      group: 'rguixaro.dev'
+      url: 'https://roots.rguixaro.dev/api/health'
       interval: 60s
       conditions:
           - '[STATUS] == 200'
           - '[RESPONSE_TIME] < 5000'
+      ui:
+          hide-conditions: true
+          badge:
+              response-time:
+                  thresholds: [200, 500, 1000, 2000, 3000]
 
-    - name: Cookbook · Receptarium
-      group: rguixaro.dev
-      url: https://cookbook.rguixaro.dev/api/health
+    - name: 'Cookbook :: receptarium'
+      group: 'rguixaro.dev'
+      url: 'https://cookbook.rguixaro.dev/api/health'
       interval: 60s
       conditions:
           - '[STATUS] == 200'
           - '[RESPONSE_TIME] < 5000'
+      ui:
+          hide-conditions: true
+          badge:
+              response-time:
+                  thresholds: [200, 500, 1000, 2000, 3000]
 
-    - name: Rask · Itinerarium
-      group: rguixaro.dev
-      url: https://rask.rguixaro.dev/api/health
+    - name: 'Rask :: itinerarium'
+      group: 'rguixaro.dev'
+      url: 'https://rask.rguixaro.dev/api/health'
       interval: 60s
       conditions:
           - '[STATUS] == 200'
           - '[RESPONSE_TIME] < 5000'
+      ui:
+          hide-conditions: true
+          badge:
+              response-time:
+                  thresholds: [200, 500, 1000, 2000, 3000]
