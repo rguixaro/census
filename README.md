@@ -1,10 +1,9 @@
-# census
+# <img src="favicon.svg" alt="census" height="24"> census
 
 Uptime monitoring for [rguixaro.dev](https://rguixaro.dev) apps. Live status at
 **[census.rguixaro.dev](https://census.rguixaro.dev)**.
 
-Built on [Gatus](https://github.com/TwiN/gatus), deployed to
-[Fly.io](https://fly.io).
+Built on [Gatus](https://github.com/TwiN/gatus).
 
 ## What's monitored
 
@@ -30,9 +29,6 @@ returns `200` within 5 seconds.
 └── README.md
 ```
 
-Caddy sits in front of Gatus purely to override `/favicon.svg` (Gatus's favicon is
-baked into the binary). Everything else is proxied transparently to Gatus on :8081.
-
 ## Deploying changes
 
 Any change to `config.yaml` (e.g. adding an endpoint, tweaking conditions) requires a
@@ -41,8 +37,6 @@ redeploy:
 ```bash
 fly deploy
 ```
-
-Zero-downtime, ~60 seconds.
 
 ## Adding an endpoint
 
@@ -59,16 +53,6 @@ Append to `endpoints:` in [config.yaml](config.yaml):
 ```
 
 Then `fly deploy`.
-
-## Alerts
-
-Not yet wired up. When added, webhook URLs will live in Fly secrets, not this repo:
-
-```bash
-fly secrets set DISCORD_WEBHOOK_URL="https://discord.com/api/webhooks/..."
-```
-
-Referenced in `config.yaml` as `${DISCORD_WEBHOOK_URL}`.
 
 ## Operations
 

@@ -19,6 +19,15 @@ ui:
         - name: 'Portfolio'
           link: 'https://rguixaro.dev'
 
+alerting:
+    telegram:
+        token: '${TELEGRAM_BOT_TOKEN}'
+        id: '${TELEGRAM_CHAT_ID}'
+        default-alert:
+            failure-threshold: 3
+            success-threshold: 2
+            send-on-resolved: true
+
 endpoints:
     - name: 'Roots :: atrium'
       group: 'rguixaro.dev'
@@ -32,6 +41,8 @@ endpoints:
           badge:
               response-time:
                   thresholds: [200, 500, 1000, 2000, 3000]
+      alerts:
+          - type: telegram
 
     - name: 'Cookbook :: receptarium'
       group: 'rguixaro.dev'
@@ -45,6 +56,8 @@ endpoints:
           badge:
               response-time:
                   thresholds: [200, 500, 1000, 2000, 3000]
+      alerts:
+          - type: telegram
 
     - name: 'Rask :: itinerarium'
       group: 'rguixaro.dev'
@@ -58,3 +71,5 @@ endpoints:
           badge:
               response-time:
                   thresholds: [200, 500, 1000, 2000, 3000]
+      alerts:
+          - type: telegram
