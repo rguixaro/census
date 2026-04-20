@@ -9,7 +9,7 @@ storage:
 ui:
     title: 'rguixaro.dev /census'
     header: 'rguixaro.dev /census'
-    description: 'Watching the vitals of atrium, receptarium, and itinerarium'
+    description: 'Watching the vitals of atrium, receptarium, itinerarium, and tabularium'
     logo: 'https://portfolio.rguixaro.dev/favicon.svg'
     link: 'https://rguixaro.dev'
     default-color-scheme: 'light'
@@ -62,6 +62,21 @@ endpoints:
     - name: 'Rask :: itinerarium'
       group: 'rguixaro.dev'
       url: 'https://rask.rguixaro.dev/api/health'
+      interval: 60s
+      conditions:
+          - '[STATUS] == 200'
+          - '[RESPONSE_TIME] < 5000'
+      ui:
+          hide-conditions: true
+          badge:
+              response-time:
+                  thresholds: [200, 500, 1000, 2000, 3000]
+      alerts:
+          - type: telegram
+
+    - name: 'Portfolio :: tabularium'
+      group: 'rguixaro.dev'
+      url: 'https://portfolio.rguixaro.dev/api/health.json'
       interval: 60s
       conditions:
           - '[STATUS] == 200'

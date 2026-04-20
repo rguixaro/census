@@ -7,11 +7,12 @@ Built on [Gatus](https://github.com/TwiN/gatus).
 
 ## What's monitored
 
-| App      | Codename    | URL                                        |
-| -------- | ----------- | ------------------------------------------ |
-| Cookbook | Receptarium | `https://cookbook.rguixaro.dev/api/health` |
-| Roots    | Atrium      | `https://roots.rguixaro.dev/api/health`    |
-| Rask     | Itinerarium | `https://rask.rguixaro.dev/api/health`     |
+| App       | Codename    | URL                                             |
+| --------- | ----------- | ----------------------------------------------- |
+| Cookbook  | Receptarium | `https://cookbook.rguixaro.dev/api/health`      |
+| Roots     | Atrium      | `https://roots.rguixaro.dev/api/health`         |
+| Rask      | Itinerarium | `https://rask.rguixaro.dev/api/health`          |
+| Portfolio | Tabularium  | `https://portfolio.rguixaro.dev/api/health.json` |
 
 Each endpoint is polled every 60 seconds. An endpoint is considered healthy when it
 returns `200` within 5 seconds.
