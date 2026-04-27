@@ -1,8 +1,5 @@
-# Stage 1: pull Gatus binary + CA certs from the official scratch-based image.
 FROM twinproduction/gatus:latest AS gatus-src
 
-# Stage 2: rasterize the SVG favicon into the exact PNG sizes Gatus's HTML expects.
-# Uses debian-slim because Alpine's librsvg package doesn't ship the rsvg-convert CLI.
 FROM debian:bookworm-slim AS icon-build
 RUN apt-get update \
  && apt-get install -y --no-install-recommends librsvg2-bin imagemagick \
@@ -17,7 +14,6 @@ RUN mkdir -p /out \
  && convert /out/favicon-32x32.png /out/favicon.ico \
  && cp /src/favicon.svg /out/favicon.svg
 
-# Stage 3: final image = Caddy + Gatus + baked assets.
 FROM caddy:2-alpine
 
 COPY --from=gatus-src /gatus /gatus
