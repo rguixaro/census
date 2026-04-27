@@ -5,8 +5,31 @@
 }
 
 :8080 {
-    # Override every favicon-related asset Gatus serves so the browser tab uses
-    # our icon (Gatus bakes its own PNGs and manifest into the binary, otherwise).
+    @api_preflight {
+        path /api/*
+        method OPTIONS
+        header_regexp Origin ^https://([A-Za-z0-9-]+\.)*rguixaro\.dev(:[0-9]+)?$
+    }
+
+    handle @api_preflight {
+        header Access-Control-Allow-Origin "{http.request.header.Origin}"
+        header Access-Control-Allow-Methods "GET, OPTIONS"
+        header Access-Control-Allow-Headers "Content-Type, Authorization"
+        header Access-Control-Max-Age "86400"
+        header Vary "Origin"
+        respond "" 204
+    }
+
+    @api_rguixaro_origin {
+        path /api/*
+        header_regexp Origin ^https://([A-Za-z0-9-]+\.)*rguixaro\.dev(:[0-9]+)?$
+    }
+
+    header @api_rguixaro_origin Access-Control-Allow-Origin "{http.request.header.Origin}"
+    header @api_rguixaro_origin Access-Control-Allow-Methods "GET, OPTIONS"
+    header @api_rguixaro_origin Access-Control-Allow-Headers "Content-Type, Authorization"
+    header @api_rguixaro_origin Vary "Origin"
+
     @assets path /favicon.svg /favicon.ico /favicon-16x16.png /favicon-32x32.png /apple-touch-icon.png /logo-192x192.png /logo-512x512.png /manifest.json
     handle @assets {
         root * /assets
