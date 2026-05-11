@@ -1,5 +1,5 @@
 web:
-    address: "127.0.0.1"
+    address: '127.0.0.1'
     port: 8081
 
 storage:
@@ -9,8 +9,9 @@ storage:
 ui:
     title: 'rguixaro.dev /census'
     header: 'rguixaro.dev /census'
-    description: 'Watching the vitals of atrium, receptarium, itinerarium, and tabularium'
-    logo: 'https://portfolio.rguixaro.dev/favicon.svg'
+    description:
+        'Watching the vitals of atrium, receptarium, itinerarium, and compendium'
+    logo: 'https://census.rguixaro.dev/favicon.svg'
     link: 'https://rguixaro.dev'
     default-color-scheme: 'light'
     buttons:
@@ -29,7 +30,7 @@ alerting:
             send-on-resolved: true
 
 endpoints:
-    - name: 'Roots :: atrium'
+    - name: 'roots :: atrium'
       group: 'rguixaro.dev'
       url: 'https://roots.rguixaro.dev/api/health'
       interval: 60s
@@ -44,7 +45,7 @@ endpoints:
       alerts:
           - type: telegram
 
-    - name: 'Cookbook :: receptarium'
+    - name: 'cookbook :: receptarium'
       group: 'rguixaro.dev'
       url: 'https://cookbook.rguixaro.dev/api/health'
       interval: 60s
@@ -59,7 +60,7 @@ endpoints:
       alerts:
           - type: telegram
 
-    - name: 'Rask :: itinerarium'
+    - name: 'rask :: itinerarium'
       group: 'rguixaro.dev'
       url: 'https://rask.rguixaro.dev/api/health'
       interval: 60s
@@ -74,7 +75,7 @@ endpoints:
       alerts:
           - type: telegram
 
-    - name: 'Portfolio :: tabularium'
+    - name: 'portfolio :: compendium'
       group: 'rguixaro.dev'
       url: 'https://portfolio.rguixaro.dev/api/health.json'
       interval: 60s

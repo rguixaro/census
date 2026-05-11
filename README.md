@@ -8,10 +8,10 @@ status at **[census.rguixaro.dev](https://census.rguixaro.dev)**. Built on
 
 | App       | Codename    | URL                                              |
 | --------- | ----------- | ------------------------------------------------ |
-| Cookbook  | receptarium | `https://cookbook.rguixaro.dev/api/health`       |
-| Roots     | atrium      | `https://roots.rguixaro.dev/api/health`          |
-| Rask      | itinerarium | `https://rask.rguixaro.dev/api/health`           |
-| Portfolio | tabularium  | `https://portfolio.rguixaro.dev/api/health.json` |
+| cookbook  | receptarium | `https://cookbook.rguixaro.dev/api/health`       |
+| roots     | atrium      | `https://roots.rguixaro.dev/api/health`          |
+| rask      | itinerarium | `https://rask.rguixaro.dev/api/health`           |
+| portfolio | compendium  | `https://portfolio.rguixaro.dev/api/health.json` |
 
 Each endpoint is polled every 60 seconds. An endpoint is considered healthy when it
 returns `200` within 5 seconds.
